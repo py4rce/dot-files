@@ -1,4 +1,5 @@
 # Config files that I use 
+-
 - .obsidian
 - kitty
 - nvim
