@@ -187,69 +187,92 @@ let c_space_errors = 1
 
 " ============================= Load vim plugins ============================= 
 " Load vim plugins {{{
+
+" ============================= Load vim plugins =============================
+" Load vim plugins {{{
 call plug#begin()
-	" Plug 'airblade/vim-gitgutter'
-	" Plug '~/.config/nvim/mrtee'
-	" Plug 'dhruvasagar/vim-dotoo' " managing to-do lists.
-	" Plug 'hrsh7th/nvim-compe' " versatile auto-completion. (DEPRECATED)
-	Plug 'github/copilot.vim' " AI-assisted coding.
-	Plug 'dhruvasagar/vim-table-mode'
-	Plug 'akinsho/bufferline.nvim', { 'tag': 'v4.9.0' } " plugin for tab line at the top
-	Plug 'catppuccin/nvim', { 'as': 'catppuccin' } " a beautiful color scheme
-	Plug 'dense-analysis/ale' " linting and fixing code.
-	Plug 'habamax/vim-asciidoctor' " editing AsciiDoc files.
-	Plug 'inkarkat/vim-AdvancedSorters' " advanced sorting of text.
-	Plug 'inkarkat/vim-ingo-library' " a library of useful functions for Vim.
-	Plug 'jeetsukumaran/vim-buffergator' " easy switching between buffers.
-	Plug 'junegunn/goyo.vim' " Clean interface when you need it
-	Plug 'kkvh/vim-docker-tools' " Docker integration
-	Plug 'ledger/vim-ledger' " ledger accounting system.
-	Plug 'lervag/vimtex' " LaTeX editing.
-	Plug 'lewis6991/gitsigns.nvim' " text buffer Git integration.
-	Plug 'majutsushi/tagbar' " displaying tags in a sidebar.
-	Plug 'mbbill/undotree' " Undo/Redo History Visualizer
-	Plug 'morhetz/gruvbox' " Gruvbox: Color Scheme
-	Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'} " text completion endine
-	Plug 'neovim/nvim-lspconfig' " Language Server Protocol Config
-	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Syntax and code analysis
-	Plug 'p00f/nvim-ts-rainbow' " Colorful parenthesis
-	Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' } " File explorer
-	Plug 'puremourning/vimspector' " Debugger integration
-	Plug 'ryanoasis/vim-devicons' " Developer font icons
-	Plug 'stsewd/sphinx.nvim' " Sphinx integration
-	Plug 'tpope/vim-commentary' " Commenting tool
-	Plug 'tpope/vim-dispatch' " Asynchronous execution
-	Plug 'tpope/vim-fugitive' " Git integration
-	Plug 'tpope/vim-speeddating' " Quick date navigation
-	Plug 'vim-airline/vim-airline' " Visual status line indicators
-	Plug 'vim-airline/vim-airline-themes' " Themes for airline
-	Plug 'vim-scripts/DoxygenToolkit.vim' " Doxygen support
-	Plug 'vim-scripts/SpellCheck' " Spell checking
-	Plug 'vim-scripts/c.vim' " Syntax highlighting and indentation
-	Plug 'vimwiki/vimwiki' " Note taking and task management
-	Plug 'voldikss/vim-floaterm' " Floating terminal support
-	Plug 'pangloss/vim-javascript'    " JavaScript support
-	Plug 'leafgarland/typescript-vim' " TypeScript syntax
-	Plug 'MaxMEllon/vim-jsx-pretty'   " JS and JSX syntax
-	Plug 'jparise/vim-graphql'        " GraphQL syntax
-	Plug 'neovim/nvim-lspconfig'
-	Plug 'hrsh7th/cmp-nvim-lsp'
-	Plug 'hrsh7th/cmp-buffer'
-	Plug 'hrsh7th/cmp-path'
-	Plug 'hrsh7th/cmp-cmdline'
-	Plug 'hrsh7th/nvim-cmp'
- 	Plug 'hrsh7th/vim-vsnip'
-	Plug 'hrsh7th/vim-vsnip-integ'	
-	" follow latest release and install jsregexp.
-	Plug 'L3MON4D3/LuaSnip' 
-	Plug 'rafamadriz/friendly-snippets'
- 	Plug 'folke/which-key.nvim'
-	Plug 'itchyny/calendar.vim'
-	Plug 'nvimdev/dashboard-nvim'
-	Plug 'nvim-lua/plenary.nvim'
-	Plug 'nvim-telescope/telescope.nvim'
+
+" --------------------- Temas y Apariencia ---------------------
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }   " Hermoso esquema de colores
+Plug 'morhetz/gruvbox'                          " Otro esquema de colores popular
+Plug 'ryanoasis/vim-devicons'                   " Iconos para desarrolladores
+Plug 'vim-airline/vim-airline'                  " Barra de estado elegante
+Plug 'vim-airline/vim-airline-themes'           " Temas para airline
+Plug 'akinsho/bufferline.nvim', { 'tag': 'v4.9.0' } " Barra de pestañas moderna
+
+" ----------------------- Archivos y Exploración -----------------------
+Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' } " Explorador de archivos
+Plug 'jeetsukumaran/vim-buffergator'                " Navegación entre buffers
+
+" ------------------------- Git e Integración -------------------------
+Plug 'lewis6991/gitsigns.nvim'     " Integración Git en buffers
+Plug 'tpope/vim-fugitive'          " Git en Vim
+" Plug 'airblade/vim-gitgutter'    " (opcional) Alternativa a gitsigns
+
+" ----------------------- Herramientas de desarrollo -----------------------
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'} " Autocompletado LSP
+Plug 'neovim/nvim-lspconfig', {'tag':'v2.3.0'} " Configuración de LSP
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Análisis de sintaxis moderno
+Plug 'p00f/nvim-ts-rainbow'           " Colores para paréntesis
+Plug 'dense-analysis/ale'             " Linter y fixer
+Plug 'tpope/vim-commentary'           " Comentarios rápidos
+Plug 'tpope/vim-dispatch'             " Ejecución asíncrona
+Plug 'majutsushi/tagbar'              " Visualización de símbolos/tags
+Plug 'vim-scripts/DoxygenToolkit.vim' " Soporte Doxygen
+Plug 'vim-scripts/c.vim'              " Soporte para C
+
+" ------------------------- Snippets y Autocompletado -------------------------
+Plug 'hrsh7th/nvim-cmp'               " Motor de completado moderno
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'L3MON4D3/LuaSnip'               " Motor moderno de snippets
+Plug 'rafamadriz/friendly-snippets'   " Repositorio de snippets
+
+" -------------------------- Lenguajes específicos --------------------------
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'jparise/vim-graphql'
+Plug 'ledger/vim-ledger'              " Contabilidad con ledger
+Plug 'habamax/vim-asciidoctor'        " AsciiDoc
+Plug 'lervag/vimtex'                  " Soporte completo para LaTeX
+Plug 'stsewd/sphinx.nvim'             " Documentación con Sphinx
+
+" ------------------------- Productividad -------------------------
+Plug 'junegunn/goyo.vim'              " Modo zen/escritura enfocada
+Plug 'dhruvasagar/vim-table-mode'     " Tablas con formato
+Plug 'mbbill/undotree'                " Visualizador de árbol de deshacer
+Plug 'itchyny/calendar.vim'           " Calendario en Vim
+Plug 'tpope/vim-speeddating'          " Edición rápida de fechas
+Plug 'inkarkat/vim-AdvancedSorters'   " Ordenamientos avanzados
+Plug 'inkarkat/vim-ingo-library'      " Librería necesaria para otros plugins
+Plug 'voldikss/vim-floaterm'          " Terminal flotante
+Plug 'kkvh/vim-docker-tools'          " Herramientas para Docker
+Plug 'folke/which-key.nvim'           " Muestra accesos rápidos
+Plug 'nvimdev/dashboard-nvim'         " Pantalla de inicio personalizada
+
+" ------------------------- Búsqueda y navegación -------------------------
+Plug 'nvim-lua/plenary.nvim'          " Librería Lua requerida por Telescope
+Plug 'nvim-telescope/telescope.nvim'  " Búsqueda de archivos y símbolos
+
+" ------------------------- Integraciones externas -------------------------
+Plug 'github/copilot.vim'             " GitHub Copilot
+
+" ------------------------- Plugins comentados / antiguos -------------------------
+" Plug 'dhruvasagar/vim-dotoo'         " Gestión de tareas estilo Org
+" Plug 'hrsh7th/nvim-compe'            " DEPRECATED
+" Plug '~/.config/nvim/mrtee'          " Plugin local personalizado
+
 call plug#end()
 " }}}
+
+
+
+
 
 " Update all plugins
 "
@@ -375,11 +398,6 @@ nmap <leader>sdu <Plug>SpeedDatingNowUTC
 nmap <leader>sdi <Plug>SpeedDatingNowLocal
 " }}}
 
-" ============================= vimwiki/vimwiki ============================= 
-" Plugin: vimwiki/vimwiki {{{
-" Set Vimwiki settings
-let g:vimwiki_list = [{'path': '/home/jose4rce/Vaults/HACKING NOTES/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
-" }}}
 
 " ============================= dense-analysis/ale ============================= 
 " Plugin: dense-analysis/ale {{{
@@ -961,23 +979,17 @@ require('dashboard').setup {
   theme = 'hyper',
   config = {
     header = {
-"██╗  ██╗██████╗  ██████╗███████╗",
-"██║  ██║██╔══██╗██╔════╝██╔════╝",
-"███████║██████╔╝██║     █████╗  ",
-"╚════██║██╔══██╗██║     ██╔══╝  ",
-"     ██║██║  ██║╚██████╗███████╗",
-"     ╚═╝╚═╝  ╚═╝ ╚═════╝╚══════╝",
-    \'   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣭⣿⣶⣿⣦⣼⣆         ',
-    \'    ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦       ',
-    \'          ⠈⢿⣿⣟⠦ ⣾⣿⣿⣷⠄⠄⠄⠄⠻⠿⢿⣿⣧⣄     ',
-    \'           ⣸⣿⣿⢧ ⢻⠻⣿⣿⣷⣄⣀⠄⠢⣀⡀⠈⠙⠿⠄    ',
-    \'          ⢠⣿⣿⣿⠈  ⠡⠌⣻⣿⣿⣿⣿⣿⣿⣿⣛⣳⣤⣀⣀   ',
-    \'   ⢠⣧⣶⣥⡤⢄ ⣸⣿⣿⠘⠄ ⢀⣴⣿⣿⡿⠛⣿⣿⣧⠈⢿⠿⠟⠛⠻⠿⠄  ',
-    \'  ⣰⣿⣿⠛⠻⣿⣿⡦⢹⣿⣷   ⢊⣿⣿⡏  ⢸⣿⣿⡇ ⢀⣠⣄⣾⠄   ',
-    \' ⣠⣿⠿⠛⠄⢀⣿⣿⣷⠘⢿⣿⣦⡀ ⢸⢿⣿⣿⣄ ⣸⣿⣿⡇⣪⣿⡿⠿⣿⣷⡄  ',
-    \' ⠙⠃   ⣼⣿⡟  ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿ ⣿⣿⡇⠄⠛⠻⢷⣄ ',
-    \'      ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆     ',
-    \'       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ',
+    '   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣭⣿⣶⣿⣦⣼⣆         ',
+    '    ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦       ',
+    '          ⠈⢿⣿⣟⠦ ⣾⣿⣿⣷⠄⠄⠄⠄⠻⠿⢿⣿⣧⣄     ',
+    '           ⣸⣿⣿⢧ ⢻⠻⣿⣿⣷⣄⣀⠄⠢⣀⡀⠈⠙⠿⠄    ',
+    '          ⢠⣿⣿⣿⠈  ⠡⠌⣻⣿⣿⣿⣿⣿⣿⣿⣛⣳⣤⣀⣀   ',
+    '   ⢠⣧⣶⣥⡤⢄ ⣸⣿⣿⠘⠄ ⢀⣴⣿⣿⡿⠛⣿⣿⣧⠈⢿⠿⠟⠛⠻⠿⠄  ',
+    '  ⣰⣿⣿⠛⠻⣿⣿⡦⢹⣿⣷   ⢊⣿⣿⡏  ⢸⣿⣿⡇ ⢀⣠⣄⣾⠄   ',
+    ' ⣠⣿⠿⠛⠄⢀⣿⣿⣷⠘⢿⣿⣦⡀ ⢸⢿⣿⣿⣄ ⣸⣿⣿⡇⣪⣿⡿⠿⣿⣷⡄  ',
+    ' ⠙⠃   ⣼⣿⡟  ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿ ⣿⣿⡇⠄⠛⠻⢷⣄ ',
+    '      ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆     ',
+    '       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ',
     },
     shortcut = {
       { desc = "🔎Find File", group = "@property", action = "Telescope find_files", key = "f" },
