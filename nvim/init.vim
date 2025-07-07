@@ -185,6 +185,10 @@ augroup end
 let c_space_errors = 1
 " }}}
 
+" autodetect .blade.php as blade
+autocmd BufRead,BufNewFile *.blade.php set filetype=blade
+
+
 " ============================= Load vim plugins ============================= 
 " Load vim plugins {{{
 
@@ -215,11 +219,13 @@ Plug 'neovim/nvim-lspconfig', {'tag':'v2.3.0'} " Configuración de LSP
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Análisis de sintaxis moderno
 Plug 'p00f/nvim-ts-rainbow'           " Colores para paréntesis
 Plug 'dense-analysis/ale'             " Linter y fixer
-Plug 'tpope/vim-commentary'           " Comentarios rápidos
+Plug 'tpope/vim-commentary'           " Comentarios rápidos con gc
 Plug 'tpope/vim-dispatch'             " Ejecución asíncrona
 Plug 'majutsushi/tagbar'              " Visualización de símbolos/tags
 Plug 'vim-scripts/DoxygenToolkit.vim' " Soporte Doxygen
 Plug 'vim-scripts/c.vim'              " Soporte para C
+Plug 'jwalton512/vim-blade'
+Plug 'honza/vim-snippets'
 
 " ------------------------- Snippets y Autocompletado -------------------------
 Plug 'hrsh7th/nvim-cmp'               " Motor de completado moderno
@@ -231,6 +237,7 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'L3MON4D3/LuaSnip'               " Motor moderno de snippets
 Plug 'rafamadriz/friendly-snippets'   " Repositorio de snippets
+Plug 'yaegassy/coc-blade', {'do': 'yarn install --frozen-lockfile'} " :CocInstall coc-blade
 
 " -------------------------- Lenguajes específicos --------------------------
 Plug 'pangloss/vim-javascript'
@@ -691,7 +698,9 @@ lspconfig.clangd.setup{
 	cmd = { "clangd", "--background-index" },
 	filetypes = { "c", "cpp" },
 }
-
+lspconfig.intelephense.setup{
+	filetypes={"php","blade"},
+}
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
